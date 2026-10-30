@@ -1,0 +1,36 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.26"
+evm_version = "paris"
+optimizer = true
+optimizer_runs = 100
+# Required: IndexVault exceeds EIP-170 without the IR pipeline (24.26 KB with it at 100 runs; CI enforces the limit).
+via_ir = true
+fs_permissions = [{ access = "read-write", path = "./deployments" }, { access = "read", path = "./script/config" }]
+remappings = [
+  "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+  "forge-std/=lib/forge-std/src/"
+]
+
+[profile.default.fuzz]
+runs = 256
+
+[profile.default.invariant]
+runs = 64
+depth = 100
+fail_on_revert = false
+
+[profile.ci.fuzz]
+runs = 2000
+
+[profile.ci.invariant]
+runs = 256
+depth = 500
+
+[fmt]
+line_length = 120
+tab_width = 4
+bracket_spacing = false
+int_types = "long"

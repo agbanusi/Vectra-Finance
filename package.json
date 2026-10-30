@@ -1,0 +1,16 @@
+{
+  "name": "vectra-finance",
+  "private": true,
+  "packageManager": "pnpm@10.33.2",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "contracts:build": "forge build",
+    "contracts:test": "forge test",
+    "abis": "node scripts/export-abis.mjs",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "dev:chain": "bash scripts/dev-chain.sh"
+  }
+}

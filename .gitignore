@@ -1,0 +1,16 @@
+out/
+cache/
+broadcast/
+node_modules/
+.env
+.env.*
+!.env.example
+.next/
+dist/
+coverage/
+*.db
+*.db-*
+.DS_Store
+.turbo/
+lcov.info
+lib/

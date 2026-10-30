@@ -1,0 +1,74 @@
+{
+  "baseAsset": "0xcEDBe2F85F06d952905EcEB3D00f9EA034b68686",
+  "chainId": 11155111,
+  "erc4626AdapterImpl": "0x2b5dE9dce49034c17608159D0d2bB1dbc3079732",
+  "eulerAdapterImpl": "0x73D4c2C6f7fEFEa12C25314c161330120C43bc44",
+  "factory": "0x535D143ef9A047e4b2250c711f5CbFd28125e0f7",
+  "indexes": [
+    "0xB2511e0d41ac26867fbe7Ad804A89552F3956FB1",
+    "0x8D70694a167cE9130efE905c3C8374fB4e7E4E4F",
+    "0x1Fc0C516cb6eb030C778e4C0C8196D8c9c3A4bEc",
+    "0xb06eD3F102F665f609F6b6812c62b6c2a24D8d68",
+    "0x6905568c145bE7CA020bd0235B9A712cadE9cA8d",
+    "0x261a5a9fc8dcb421e46C1d3E024e5d0a43aAF78c"
+  ],
+  "lens": "0x2281E219235D43469dAf0ae1378FE49c1aabC474",
+  "morphoAdapterImpl": "0x0bED9cbA10e5C0d4d07b7F14F6652D6E1c8ED61d",
+  "permissionlessCompliance": "0xE703520C9a26912282621C8B31bb9f6167372FF2",
+  "registry": "0x6eD7EdBf05A6A30A21115905DBd2a29966E760B4",
+  "rwaAdapterImpl": "0x5141796534e3027E7918b8fc5dD2Fca618Dd63e9",
+  "rwaCompliance": "0x40a95307A9BE281A0631140607723C46ce4683E4",
+  "startBlock": 12023081,
+  "strategyVaults": {
+    "0x0B6C3C25e7dBA30684A32c1bfaFc6146dDfD0A3f": {
+      "aprBps": 760,
+      "name": "Edge-style Euler Prime USDC (testnet)",
+      "symbol": "teeUSDC",
+      "vault": "0x0B6C3C25e7dBA30684A32c1bfaFc6146dDfD0A3f"
+    },
+    "0x21ed47Ac5fAB5bf0666FF12c2d8787F320754A39": {
+      "aprBps": 520,
+      "name": "Gauntlet-style USDC Prime (testnet)",
+      "symbol": "tgUSDCp",
+      "vault": "0x21ed47Ac5fAB5bf0666FF12c2d8787F320754A39"
+    },
+    "0x272588037F4f35aB3b4FDe1406597209169CF12F": {
+      "aprBps": 710,
+      "name": "Gauntlet-style Euler USDC (testnet)",
+      "symbol": "tgeUSDC",
+      "vault": "0x272588037F4f35aB3b4FDe1406597209169CF12F"
+    },
+    "0x6d29123F6f4D98491305D62bbEE777d0CfE18840": {
+      "aprBps": 670,
+      "name": "Edge-style USDC Morpho (testnet)",
+      "symbol": "teUSDCm",
+      "vault": "0x6d29123F6f4D98491305D62bbEE777d0CfE18840"
+    },
+    "0x82367C09070b9590f5636c48B17db4896286D69B": {
+      "aprBps": 910,
+      "name": "Gauntlet-style USDC Frontier (testnet)",
+      "symbol": "tgUSDCf",
+      "vault": "0x82367C09070b9590f5636c48B17db4896286D69B"
+    },
+    "0x87aAd8184bbc5Ff0Fbd39c5BA6F327370Cc91D14": {
+      "aprBps": 480,
+      "name": "Tokenized T-Bill Vault (testnet)",
+      "symbol": "tTBILL",
+      "vault": "0x87aAd8184bbc5Ff0Fbd39c5BA6F327370Cc91D14"
+    },
+    "0xE2cb3D58230B33DC755Eca6b52D213a1222C4a66": {
+      "aprBps": 640,
+      "name": "Gauntlet-style USDC Core (testnet)",
+      "symbol": "tgUSDCc",
+      "vault": "0xE2cb3D58230B33DC755Eca6b52D213a1222C4a66"
+    },
+    "0xe7f9C2e9352F740Ecd69384F8694F0739a61c68C": {
+      "aprBps": 1050,
+      "name": "Private Credit Vault (testnet)",
+      "symbol": "tCREDIT",
+      "vault": "0xe7f9C2e9352F740Ecd69384F8694F0739a61c68C"
+    }
+  },
+  "testnet": true,
+  "vaultImplementation": "0xC14F42D29413527a5ca60AeB833eebb7F040D51a"
+}

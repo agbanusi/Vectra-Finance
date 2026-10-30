@@ -1,0 +1,27 @@
+{
+  "_comment": "TEMPLATE ONLY. Replace every 0x0 address with addresses you have verified on the target chain. adapters.targets must be ERC-4626 vaults whose asset() equals baseAsset.",
+  "name": "Vectra Example Lending Index",
+  "symbol": "vEXAMPLE",
+  "baseAsset": "0x0000000000000000000000000000000000000000",
+  "admin": "0x0000000000000000000000000000000000000000",
+  "curator": "0x0000000000000000000000000000000000000000",
+  "guardian": "0x0000000000000000000000000000000000000000",
+  "keeper": "0x0000000000000000000000000000000000000000",
+  "feeRecipient": "0x0000000000000000000000000000000000000000",
+  "complianceModule": "0x0000000000000000000000000000000000000000",
+  "managementFeeBps": 50,
+  "performanceFeeBps": 1000,
+  "liquidBufferBps": 1000,
+  "weightToleranceBps": 300,
+  "minDeposit": 1000000,
+  "minRedeem": 1000000000000000000,
+  "redemptionTtl": 604800,
+  "maxQueueLength": 500,
+  "partialFillsEnabled": true,
+  "adapters": {
+    "kinds": ["MORPHO", "EULER"],
+    "targets": ["0x0000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000"],
+    "weightsBps": [6000, 4000],
+    "slippageBps": [50, 50]
+  }
+}
