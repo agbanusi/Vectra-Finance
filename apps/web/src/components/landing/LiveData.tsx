@@ -155,13 +155,13 @@ function FeaturedCard({ m, symbol, apyLoading }: { m: Market; symbol: string; ap
 export function FeaturedIndexes() {
   const { ranked, isLoading, symbol, apyLoading, configured } = useLanding();
   if (isLoading) {
-    return <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{[0, 1, 2].map((i) => <Skeleton key={i} className="h-[248px] w-full rounded-2xl" />)}</div>;
+    return <div className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2 lg:grid-cols-3">{[0, 1, 2].map((i) => <Skeleton key={i} className="h-[248px] w-full rounded-2xl" />)}</div>;
   }
   if (!configured || ranked.length === 0) {
     return <div className="surface-card rounded-[var(--radius-xl)]"><EmptyState icon={Layers} title="No live indexes on this network yet">Indexes appear here as soon as they are created on-chain.</EmptyState></div>;
   }
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {ranked.slice(0, 6).map((m) => <FeaturedCard key={m.index.vault} m={m} symbol={symbol} apyLoading={apyLoading} />)}
     </div>
   );

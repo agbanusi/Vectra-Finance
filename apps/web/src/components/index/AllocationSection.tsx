@@ -55,7 +55,7 @@ export function AllocationSection({ index: v, symbol }: { index: IndexView; symb
   return (
     <Card>
       <CardHeader title="Allocation" description={`Live allocation vs. target weights across ${v.adapters.length} governance-approved strategies.`} />
-      <div className="grid gap-6 p-5 sm:p-6 lg:grid-cols-[200px_1fr] lg:items-center">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-6 p-5 sm:p-6 lg:grid-cols-[200px_minmax(0,1fr)] lg:items-center">
         <div className="relative mx-auto size-[200px]">
           {slices.length > 0 ? (
             <ResponsiveContainer width="100%" height="100%">
@@ -92,7 +92,7 @@ export function AllocationSection({ index: v, symbol }: { index: IndexView; symb
           <thead>
             <tr className="text-left text-xs text-subtle">
               <th scope="col" className="h-10 pl-5 pr-3 font-medium">Strategy</th>
-              <th scope="col" className="px-3 text-right font-medium">Current / target</th>
+              <th scope="col" className="px-3 text-right font-medium">Weight / target</th>
               <th scope="col" className="px-3 text-right font-medium">Drift</th>
               <th scope="col" className="px-3 text-right font-medium">Value</th>
               <th scope="col" className="px-3 text-right font-medium">Realised APY</th>
@@ -104,7 +104,8 @@ export function AllocationSection({ index: v, symbol }: { index: IndexView; symb
               const info = names[a.target.toLowerCase()];
               const drift = driftBps(a.totalAssets, a.targetAssets);
               const h = adapterHealth(a);
-              const current = share(a.totalAssets, v.nav);
+              // Weight among deployed strategies, comparable with the target weight (which applies after the buffer).
+              const current = share(a.totalAssets, deployed);
               return (
                 <tr key={a.adapter} className="transition-colors hover:bg-white/[0.015]">
                   <td className="py-3.5 pl-5 pr-3">
@@ -159,7 +160,7 @@ export function AllocationSection({ index: v, symbol }: { index: IndexView; symb
                 </div>
                 <dl className="grid grid-cols-4 gap-2 text-xs">
                   <div><dt className="text-subtle">Target</dt><dd className="tabular mt-0.5 text-fg">{formatPct(a.targetBps / 10_000)}</dd></div>
-                  <div><dt className="text-subtle">Current</dt><dd className="tabular mt-0.5 text-fg">{formatPct(share(a.totalAssets, v.nav))}</dd></div>
+                  <div><dt className="text-subtle">Weight</dt><dd className="tabular mt-0.5 text-fg">{formatPct(share(a.totalAssets, deployed))}</dd></div>
                   <div><dt className="text-subtle">Value</dt><dd className="tabular mt-0.5 text-fg">{formatValueCompact(a.totalAssets, v.baseDecimals, symbol)}</dd></div>
                   <div className="text-right"><dt className="text-subtle">APY</dt><dd className="mt-0.5"><ApyCell apy={apys.data?.[a.target.toLowerCase()] ?? null} loading={apys.isLoading} /></dd></div>
                 </dl>
@@ -168,7 +169,7 @@ export function AllocationSection({ index: v, symbol }: { index: IndexView; symb
           })}
         </ul>
         <p className="border-t border-border px-5 py-3.5 text-xs text-subtle sm:px-6">
-          Targets apply after the {formatPct(v.liquidBufferBps / 10_000)} liquidity buffer. Drift tolerance ±{formatPct(v.weightToleranceBps / 10_000)}; keepers rebalance beyond it.
+          Weights are shares of deployed assets; targets apply after the {formatPct(v.liquidBufferBps / 10_000)} liquidity buffer. Drift tolerance ±{formatPct(v.weightToleranceBps / 10_000)}; keepers rebalance beyond it.
         </p>
       </div>
     </Card>

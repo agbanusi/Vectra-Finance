@@ -38,7 +38,7 @@ function Mechanics({ index: v }: { index: IndexView }) {
   return (
     <Card>
       <CardHeader title="How withdrawals work" />
-      <ol className="grid gap-5 p-5 sm:p-6 md:grid-cols-2">
+      <ol className="grid grid-cols-[minmax(0,1fr)] gap-5 p-5 sm:p-6 md:grid-cols-2">
         <Step icon={Zap} title="Instant from the buffer">If free liquidity (the {formatBpsPct(v.liquidBufferBps)} target buffer, minus assets reserved for the queue) covers your claim, you are paid in the same transaction.</Step>
         <Step icon={Clock} title="Otherwise, a fair FIFO queue">Larger claims opt in to the queue: shares are escrowed and requests are filled first-in, first-out as keepers withdraw from strategies.</Step>
         <Step icon={ShieldAlert} title="Paid at fill-time NAV, with a floor">Queued requests settle at the NAV when filled, never below your minimum. A request whose floor is not met is skipped until NAV recovers, while later requests proceed.</Step>
@@ -87,7 +87,7 @@ function Parameters({ index: v, symbol }: { index: IndexView; symbol: string }) 
   return (
     <Card>
       <CardHeader title="Parameters" description="Current on-chain configuration." />
-      <dl className="grid gap-x-8 p-5 pt-3 sm:grid-cols-2 sm:p-6 sm:pt-3">
+      <dl className="grid grid-cols-[minmax(0,1fr)] gap-x-8 p-5 pt-3 sm:grid-cols-2 sm:p-6 sm:pt-3">
         {rows.map(([k, val]) => (
           <div key={k} className="flex items-center justify-between gap-4 border-b border-border py-2.5 text-[13px]">
             <dt className="text-subtle">{k}</dt>

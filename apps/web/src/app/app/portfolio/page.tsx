@@ -75,7 +75,8 @@ function Connected() {
           const r = positions.data?.[i];
           return { m, p: r?.status === "success" ? r.result : undefined };
         })
-        .filter((x): x is { m: Market; p: NonNullable<typeof x.p> } => Boolean(x.p && x.p.shares > 0n)),
+        .filter((x): x is { m: Market; p: NonNullable<typeof x.p> } => Boolean(x.p && x.p.shares > 0n))
+        .sort((a, b) => (a.p.value === b.p.value ? 0 : a.p.value > b.p.value ? -1 : 1)),
     [markets, positions.data],
   );
   const total = held.reduce((s, x) => s + x.p.value, 0n);

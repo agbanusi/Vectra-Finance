@@ -4,7 +4,10 @@ import { useState } from "react";
 import { useAccount } from "wagmi";
 import type { Eligibility } from "@/hooks/useEligibility";
 import { useMounted } from "@/hooks/useMounted";
+import { Lock } from "lucide-react";
 import { config } from "@/lib/config";
+import { isPermissionless } from "@/lib/types";
+import { Notice } from "../ui/States";
 import { isDepositGated } from "@/lib/deposit";
 import type { IndexView } from "@/lib/types";
 import { Card } from "../ui/Card";
@@ -41,7 +44,10 @@ export function ActionCard({ index: v, symbol, eligibility }: { index: IndexView
             <div className="space-y-4"><Skeleton className="h-[118px] w-full rounded-2xl" /><Skeleton className="h-24 w-full" /><Skeleton className="h-13 w-full rounded-xl" /></div>
           ) : (
             <>
-              <TabsContent value="deposit" className="focus-visible:outline-none">
+              <TabsContent value="deposit" className="space-y-4 focus-visible:outline-none">
+                {!gated && !isPermissionless(v.compliancePolicy) ? (
+                  <Notice tone="warning" icon={Lock}>Restricted index — only allowlisted wallets can deposit. {address ? (eligibility.eligible ? "Your wallet is allowlisted." : eligibility.label + ".") : "Connect to check eligibility."}</Notice>
+                ) : null}
                 {gated && address ? <EligibilityGate account={address} module={v.complianceModule} /> : <DepositPanel index={v} symbol={symbol} eligible={eligibility.eligible} slippageBps={slippage} onConnect={connect} />}
               </TabsContent>
               <TabsContent value="withdraw" className="focus-visible:outline-none">

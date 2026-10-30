@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { cn } from "./cn";
 
 const PALETTES: [string, string][] = [
@@ -27,7 +28,8 @@ export function monogram(symbol: string): string {
 /** Deterministic generated mark for an index token (no third-party logos). */
 export function TokenIcon({ symbol, seed, size = 36, className }: { symbol: string; seed?: string; size?: number; className?: string }) {
   const [from, to] = PALETTES[hash(seed ?? symbol) % PALETTES.length] ?? PALETTES[0]!;
-  const id = `g-${hash((seed ?? symbol) + symbol).toString(36)}`;
+  // Unique per instance: a gradient defined inside a display:none subtree (e.g. the hidden desktop table) does not paint.
+  const id = `g-${useId().replace(/:/g, "")}`;
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden="true" className={cn("shrink-0", className)}>
       <defs>
